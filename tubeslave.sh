@@ -35,5 +35,5 @@ do
     name="$(echo "$line" | awk -F'|' '{print $1}' | xargs)"
     url="$(echo "$line" | awk -F'|' '{print $2}' | xargs)"
 
-    download "$name" "$url"
+    download "$name" "$url" &
 done < "$LIST"
