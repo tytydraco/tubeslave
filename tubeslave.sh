@@ -4,7 +4,7 @@ LIST="list.txt"
 ARCHIVES="archives"
 DOWNLOADS="downloads"
 FORMAT="%(uploader)s|%(creator)s|%(title)s.%(ext)s"
-POST_SCRIPT="post.sh"
+POST_SCRIPT=/"post.sh"
 
 mkdir -p "$ARCHIVES"
 
@@ -26,7 +26,7 @@ download() {
         --embed-thumbnail \
         --add-metadata \
         --exec "$POST_SCRIPT {}" \
-        -o "$DOWNLOADS/$name/$FORMAT" \
+        -o "./$DOWNLOADS/$name/$FORMAT" \
         "$url"
 }
 
