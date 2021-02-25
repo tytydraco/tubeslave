@@ -25,8 +25,8 @@ download() {
         --audio-quality 0 \
         --embed-thumbnail \
         --add-metadata \
-        --exec "$POST_SCRIPT {}" \
-        -o "./$DOWNLOADS/$name/$FORMAT" \
+        --exec "./$POST_SCRIPT {}" \
+        -o "$DOWNLOADS/$name/$FORMAT" \
         "$url"
 }
 
