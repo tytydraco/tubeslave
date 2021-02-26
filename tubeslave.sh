@@ -5,6 +5,7 @@ ARCHIVES="archives"
 DOWNLOADS="downloads"
 FORMAT="%(uploader)s|%(creator)s|%(title)s.%(ext)s"
 POST_SCRIPT="post.sh"
+FORMAT="mp3"
 
 mkdir -p "$ARCHIVES"
 
@@ -21,7 +22,7 @@ download() {
         -i \
         -x \
         --download-archive "$ARCHIVES/$name.txt" \
-        --audio-format "mp3" \
+        --audio-format "$FORMAT" \
         --audio-quality 0 \
         --embed-thumbnail \
         --add-metadata \
