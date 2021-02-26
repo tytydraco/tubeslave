@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+cd "$(dirname "$0")"
 
 LIST_URL="https://gist.githubusercontent.com/tytydraco/b046cd249b6a75d5806398e9872746a1/raw/0f0f187ad08b93b8dcb022e359362e08ef88e9f8/list.txt"
 ARCHIVES="archives"
