@@ -27,6 +27,7 @@ download() {
         --add-metadata \
         --output-na-placeholder "" \
         --exec "./$POST_SCRIPT {}" \
+        -w \
         -o "$DOWNLOADS/$name/$FORMAT" \
         "$url"
 }
