@@ -7,7 +7,7 @@ NEWPATH="$ORIGINAL_PATH"
 NEWPATH="$(echo "$NEWPATH" | sed 's/ -  - / - /g')"
 
 echo ""
-echo -e "DONE: \033[0;31m$NEWPATH\033[0m"
+echo -e "\033[0;31mDOWNLOADED: $NEWPATH\033[0m"
 echo ""
 
 [[ "$ORIGINAL_PATH" != "$NEWPATH" ]] && mv "$ORIGINAL_PATH" "$NEWPATH"

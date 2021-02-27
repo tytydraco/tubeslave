@@ -7,8 +7,17 @@ DOWNLOADS="downloads"
 FORMAT="%(uploader)s - %(creator)s - %(title)s.%(ext)s"
 POST_SCRIPT="post.sh"
 AUDIO_FORMAT="mp3"
+LOCK=".lock"
 
 mkdir -p "$ARCHIVES"
+
+while [[ -f "$LOCK" ]]
+do
+    echo "Waiting for lock to release [at: $LOCK]..."
+    sleep 1
+done
+
+touch "$LOCK"
 
 # download <name> <url>
 download() {
@@ -17,6 +26,10 @@ download() {
 
     name="$1"
     url="$2"
+
+    echo ""
+    echo -e "\033[0;31mSTARTING $name\033[0m"
+    echo ""
 
     mkdir -p "$DOWNLOADS/$name"
     youtube-dl \
@@ -27,7 +40,7 @@ download() {
         --audio-quality 0 \
         --embed-thumbnail \
         --add-metadata \
-	--match-filter "!is_live" \
+        --match-filter "!is_live" \
         --output-na-placeholder "" \
         --exec "./$POST_SCRIPT {}" \
         -w \
@@ -43,3 +56,13 @@ do
 
     download "$name" "$url" &
 done <<< "$list_content"
+
+wait
+
+rm -f "$LOCK"
+
+echo ""
+echo -e "\033[0;31mFinished tube.\033[0m"
+echo ""
+
+exit 0
