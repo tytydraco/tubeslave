@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 rm -rf archives downloads
-rm .lock
+rm -f .lock
