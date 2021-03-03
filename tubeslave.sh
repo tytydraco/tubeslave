@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 LIST_URL="https://gist.githubusercontent.com/tytydraco/b046cd249b6a75d5806398e9872746a1/raw/list.txt"
 ARCHIVES="archives"
 DOWNLOADS="downloads"
-FORMAT="%(uploader)s - %(creator)s - %(title)s.%(ext)s"
+FORMAT="%(title)s - %(creator)s - %(uploader)s.%(ext)s"
 POST_SCRIPT="post.sh"
 AUDIO_FORMAT="mp3"
 LOCK=".lock"
@@ -28,7 +28,7 @@ download() {
     url="$2"
 
     echo ""
-    echo -e "\033[0;31mSTARTING $name\033[0m"
+    echo -e "\033[0;31mSTARTING $name | $url\033[0m"
     echo ""
 
     mkdir -p "$DOWNLOADS/$name"
