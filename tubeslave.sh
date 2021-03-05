@@ -44,6 +44,7 @@ download() {
         --output-na-placeholder "" \
         --exec "./$POST_SCRIPT {}" \
         -w \
+	--no-post-overwrites \
         -o "$DOWNLOADS/$name/$FORMAT" \
         "$url"
 }
