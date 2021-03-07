@@ -42,7 +42,6 @@ download() {
         --add-metadata \
         --match-filter "!is_live" \
         --output-na-placeholder "" \
-        --exec "./$POST_SCRIPT {}" \
         -w \
 	--no-post-overwrites \
         -o "$DOWNLOADS/$name/$FORMAT" \
