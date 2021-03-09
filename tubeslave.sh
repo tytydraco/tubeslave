@@ -8,6 +8,7 @@ FORMAT="%(title)s ~ %(id)s.%(ext)s"
 POST_SCRIPT="post.sh"
 AUDIO_FORMAT="mp3"
 LOCK=".lock"
+LOG="log.txt"
 
 mkdir -p "$ARCHIVES"
 
@@ -18,6 +19,7 @@ do
 done
 
 touch "$LOCK"
+echo "$(date)" >> "$LOG"
 
 # download <name> <url>
 download() {
