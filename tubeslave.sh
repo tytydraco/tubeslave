@@ -12,11 +12,11 @@ LOG="log.txt"
 
 mkdir -p "$ARCHIVES"
 
-while [[ -f "$LOCK" ]]
-do
-    echo "Waiting for lock to release [at: $LOCK]..."
-    sleep 1
-done
+if [[ -f "$LOCK" ]]
+then
+    echo "Lock is held [at: $LOCK]..."
+    exit 1
+fi
 
 touch "$LOCK"
 echo "$(date)" >> "$LOG"
