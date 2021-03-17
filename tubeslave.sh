@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" || exit 1
 
 LIST_URL="https://gist.githubusercontent.com/tytydraco/b046cd249b6a75d5806398e9872746a1/raw/list.txt"
 ARCHIVES="archives"
 DOWNLOADS="downloads"
 FORMAT="%(title)s ~ %(id)s.%(ext)s"
-POST_SCRIPT="post.sh"
 AUDIO_FORMAT="mp3"
 LOCK=".lock"
-LOG="log.txt"
 
 mkdir -p "$ARCHIVES"
 
@@ -19,7 +17,6 @@ then
 fi
 
 touch "$LOCK"
-echo "$(date)" >> "$LOG"
 
 # download <name> <url>
 download() {
@@ -45,7 +42,7 @@ download() {
         --match-filter "!is_live" \
         --output-na-placeholder "" \
         -w \
-	--no-post-overwrites \
+        --no-post-overwrites \
         -o "$DOWNLOADS/$name/$FORMAT" \
         "$url"
 }
