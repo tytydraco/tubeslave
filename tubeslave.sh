@@ -20,21 +20,11 @@ touch "$LOCK"
 
 # download <name> <url>
 download() {
-    local name
-    local url
-
-    name="$1"
-    url="$2"
-
-    echo ""
-    echo -e "\033[0;31mSTARTING $name | $url\033[0m"
-    echo ""
-
-    mkdir -p "$DOWNLOADS/$name"
+    mkdir -p "$DOWNLOADS/$1"
     youtube-dl \
         -i \
         -x \
-        --download-archive "$ARCHIVES/$name.txt" \
+        --download-archive "$ARCHIVES/$1.txt" \
         --audio-format "$AUDIO_FORMAT" \
         --audio-quality 0 \
         --embed-thumbnail \
@@ -43,8 +33,8 @@ download() {
         --output-na-placeholder "" \
         -w \
         --no-post-overwrites \
-        -o "$DOWNLOADS/$name/$FORMAT" \
-        "$url"
+        -o "$DOWNLOADS/$1/$FORMAT" \
+        "$2"
 }
 
 list_content="$(curl -s "$LIST_URL")"
